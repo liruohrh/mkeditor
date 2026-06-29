@@ -1,0 +1,118 @@
+/* Cursor Dark — 复刻 Cursor 编辑器深色主题（基于 CedricVerlinden/cursor-dark）。
+   dark: 直接取自 cursor-dark.json 调色板。
+   light: 派生自同一色彩 DNA（冷灰底 + 薄荷青/粉/金 强调色），
+          反转为白底并把饱和色加深以保证对比。 */
+
+[data-theme='cursor-dark'][data-mode='dark'] {
+  /* 编辑器主背景 #1a1a1a，侧栏/状态栏 #141414 */
+  --md-bg: #1a1a1a;
+  --md-bg-surface: #141414;
+  --md-bg-elevated: #242424;
+  --md-bg-input: #1a1a1a;
+
+  --md-fg: #d8dee9;
+  --md-fg-muted: #cccccc99;
+  --md-fg-faint: #505050;
+
+  --md-heading: #ffffff;
+  --md-accent: #88c0d0;
+  --md-accent-2: #4c9df3;
+  --md-accent-soft: rgba(136, 192, 208, 0.16);
+  --md-accent-fg: #1a1a1a;
+
+  --md-border: #2a2a2a;
+  --md-border-strong: #404040;
+
+  --md-link: #4c9df3;
+  --md-quote: #888888;
+  --md-hr: #2a2a2a;
+
+  --md-code-bg: #141414;
+  --md-code-fg: #88c0d0;
+  --md-code-border: #2a2a2a;
+
+  --md-selection: rgba(64, 64, 64, 0.6);
+  --md-caret: #ffffff;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-ring: rgba(136, 192, 208, 0.4);
+
+  /* 语法色：从 tokenColors 直接抽取。
+     keyword      #83d6c5  (mint)
+     string       #e394dc  (pink)
+     number       #ebc88d  (gold)
+     function     #ebc88d  (gold)
+     tag (html)   #87c3ff  (blue)
+     attr         #aaa0fa  (lavender)
+     builtin      #82d2ce  (cyan)
+     comment      #6d6d6d
+     punct        #898989
+  */
+  --syntax-keyword: #83d6c5;
+  --syntax-string: #e394dc;
+  --syntax-number: #ebc88d;
+  --syntax-comment: #6d6d6d;
+  --syntax-function: #ebc88d;
+  --syntax-tag: #87c3ff;
+  --syntax-attr: #aaa0fa;
+  --syntax-builtin: #82d2ce;
+  --syntax-punct: #898989;
+}
+
+[data-theme='cursor-dark'][data-mode='light'] {
+  /* 镜像 dark：编辑器主背景 #fafafa，侧栏/状态栏 #f0f0f0 */
+  --md-bg: #fafafa;
+  --md-bg-surface: #f0f0f0;
+  --md-bg-elevated: #e6e6e6;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #1a1a1a;
+  --md-fg-muted: #5a5a5a;
+  --md-fg-faint: #a0a0a0;
+
+  --md-heading: #000000;
+  --md-accent: #2d8b8b;
+  --md-accent-2: #1e6fdb;
+  --md-accent-soft: rgba(45, 139, 139, 0.14);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d4d4d4;
+  --md-border-strong: #a8a8a8;
+
+  --md-link: #1e6fdb;
+  --md-quote: #6a6a6a;
+  --md-hr: #d4d4d4;
+
+  --md-code-bg: #f0f0f0;
+  --md-code-fg: #2d8b8b;
+  --md-code-border: #d4d4d4;
+
+  --md-selection: rgba(45, 139, 139, 0.16);
+  --md-caret: #1a1a1a;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --md-ring: rgba(45, 139, 139, 0.4);
+
+  /* 语法色：把 dark 的薄荷青/粉/金/蓝/紫 加深以适配白底。
+     keyword      #00897b  (darker mint from #83d6c5)
+     string       #c2185b  (darker pink from #e394dc)
+     number       #c45d2e  (warm orange-gold)
+     function     #b06800  (darker gold from #ebc88d)
+     tag          #0b6cad  (darker blue from #87c3ff)
+     attr         #5a3da8  (darker lavender from #aaa0fa)
+     builtin      #00897b  (darker cyan from #82d2ce)
+     comment      #7a7a7a
+     punct        #4a4a4a
+  */
+  --syntax-keyword: #00897b;
+  --syntax-string: #c2185b;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #7a7a7a;
+  --syntax-function: #b06800;
+  --syntax-tag: #0b6cad;
+  --syntax-attr: #5a3da8;
+  --syntax-builtin: #00897b;
+  --syntax-punct: #4a4a4a;
+}

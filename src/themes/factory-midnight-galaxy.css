@@ -1,0 +1,93 @@
+/* Midnight Galaxy — 来自 theme-factory。
+   调色板：Deep Purple #2b1e3e / Cosmic Blue #4a4e8f / Lavender #a490c2 / Silver #e6e6fa
+   dark: 深紫底 + 薰衣草紫强调；light: 淡紫白底 + 宇宙蓝强调。 */
+
+[data-theme='factory-midnight-galaxy'][data-mode='dark'] {
+  --md-bg: #1a1228;
+  --md-bg-surface: #2b1e3e;
+  --md-bg-elevated: #382a52;
+  --md-bg-input: #14091a;
+
+  --md-fg: #c8c0e0;
+  --md-fg-muted: #8a80a8;
+  --md-fg-faint: #5a4a70;
+
+  --md-heading: #e6e6fa;
+  --md-accent: #a490c2;
+  --md-accent-2: #4a4e8f;
+  --md-accent-soft: rgba(164, 144, 194, 0.22);
+  --md-accent-fg: #1a1228;
+
+  --md-border: #382a52;
+  --md-border-strong: #483868;
+
+  --md-link: #a490c2;
+  --md-quote: #5a4a70;
+  --md-hr: #382a52;
+
+  --md-code-bg: #2b1e3e;
+  --md-code-fg: #a490c2;
+  --md-code-border: #382a52;
+
+  --md-selection: rgba(164, 144, 194, 0.28);
+  --md-caret: #a490c2;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --md-ring: rgba(164, 144, 194, 0.45);
+
+  --syntax-keyword: #a490c2;
+  --syntax-string: #b8c890;
+  --syntax-number: #d4a87c;
+  --syntax-comment: #5a4a70;
+  --syntax-function: #88a8d4;
+  --syntax-tag: #c878a8;
+  --syntax-attr: #d4c87c;
+  --syntax-builtin: #a490c2;
+  --syntax-punct: #8888b8;
+}
+
+[data-theme='factory-midnight-galaxy'][data-mode='light'] {
+  --md-bg: #f5f0fa;
+  --md-bg-surface: #e8e0f0;
+  --md-bg-elevated: #dcd0e8;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #3a2848;
+  --md-fg-muted: #6a5a78;
+  --md-fg-faint: #a898b8;
+
+  --md-heading: #1a1228;
+  --md-accent: #4a4e8f;
+  --md-accent-2: #2b1e3e;
+  --md-accent-soft: rgba(74, 78, 143, 0.14);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d8d0e0;
+  --md-border-strong: #b8a8c8;
+
+  --md-link: #4a4e8f;
+  --md-quote: #6a5a78;
+  --md-hr: #d8d0e0;
+
+  --md-code-bg: #e8e0f0;
+  --md-code-fg: #4a4e8f;
+  --md-code-border: #d8d0e0;
+
+  --md-selection: rgba(74, 78, 143, 0.16);
+  --md-caret: #4a4e8f;
+
+  --md-shadow-sm: 0 1px 2px rgba(60, 40, 80, 0.08);
+  --md-shadow: 0 12px 32px rgba(60, 40, 80, 0.12);
+  --md-ring: rgba(74, 78, 143, 0.4);
+
+  --syntax-keyword: #4a4e8f;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #7a6a88;
+  --syntax-function: #1a5a8a;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #4a4e8f;
+  --syntax-punct: #4a4e8f;
+}

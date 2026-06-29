@@ -1,0 +1,93 @@
+/* Material Palenight — 靛蓝夜色 + 紫罗兰强调色。
+   dark: 经典 Palenight。
+   light: 等同原 Material Palenight Light 调色板（淡薰衣草纸面）。 */
+
+[data-theme='material-palenight'][data-mode='dark'] {
+  --md-bg: #292d3e;
+  --md-bg-surface: #2f334d;
+  --md-bg-elevated: #3b3f5a;
+  --md-bg-input: #232642;
+
+  --md-fg: #a6accd;
+  --md-fg-muted: #676e95;
+  --md-fg-faint: #4b5170;
+
+  --md-heading: #c3c7e6;
+  --md-accent: #82aaff;
+  --md-accent-2: #c792ea;
+  --md-accent-soft: rgba(130, 170, 255, 0.16);
+  --md-accent-fg: #292d3e;
+
+  --md-border: #3a3f58;
+  --md-border-strong: #4b5170;
+
+  --md-link: #82aaff;
+  --md-quote: #676e95;
+  --md-hr: #3a3f58;
+
+  --md-code-bg: #232642;
+  --md-code-fg: #c792ea;
+  --md-code-border: #3a3f58;
+
+  --md-selection: rgba(199, 146, 234, 0.25);
+  --md-caret: #c792ea;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --md-ring: rgba(130, 170, 255, 0.45);
+
+  --syntax-keyword: #c792ea;
+  --syntax-string: #c3e88d;
+  --syntax-number: #f78c6c;
+  --syntax-comment: #676e95;
+  --syntax-function: #82aaff;
+  --syntax-tag: #f07178;
+  --syntax-attr: #ffcb6b;
+  --syntax-builtin: #82aaff;
+  --syntax-punct: #89ddff;
+}
+
+[data-theme='material-palenight'][data-mode='light'] {
+  --md-bg: #f2f0ff;
+  --md-bg-surface: #e8e5f5;
+  --md-bg-elevated: #ddd9f0;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #4e4a5e;
+  --md-fg-muted: #8e87a8;
+  --md-fg-faint: #b0a9c4;
+
+  --md-heading: #2a2440;
+  --md-accent: #7c4dff;
+  --md-accent-2: #6182b8;
+  --md-accent-soft: rgba(124, 77, 255, 0.12);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d9d3ec;
+  --md-border-strong: #bdb3d9;
+
+  --md-link: #7c4dff;
+  --md-quote: #8e87a8;
+  --md-hr: #d9d3ec;
+
+  --md-code-bg: #e8e5f5;
+  --md-code-fg: #7c4dff;
+  --md-code-border: #d9d3ec;
+
+  --md-selection: rgba(124, 77, 255, 0.15);
+  --md-caret: #7c4dff;
+
+  --md-shadow-sm: 0 1px 2px rgba(80, 60, 130, 0.08);
+  --md-shadow: 0 12px 32px rgba(80, 60, 130, 0.14);
+  --md-ring: rgba(124, 77, 255, 0.4);
+
+  --syntax-keyword: #7c4dff;
+  --syntax-string: #0d8e6c;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #8e87a8;
+  --syntax-function: #3b6fb3;
+  --syntax-tag: #d32f2f;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #7c4dff;
+  --syntax-punct: #6b6680;
+}

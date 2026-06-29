@@ -1,0 +1,93 @@
+/* Material Deep Ocean — 海洋深蓝 + 青色辉光。
+   dark: 经典 Deep Ocean。
+   light: 同色系在浅纸面上的延伸（青色加深为深青保证对比）。 */
+
+[data-theme='material-deep-ocean'][data-mode='dark'] {
+  --md-bg: #0f111a;
+  --md-bg-surface: #111824;
+  --md-bg-elevated: #182233;
+  --md-bg-input: #0c0e16;
+
+  --md-fg: #9fb4c2;
+  --md-fg-muted: #546e7a;
+  --md-fg-faint: #3a4a55;
+
+  --md-heading: #84ffff;
+  --md-accent: #84ffff;
+  --md-accent-2: #82aaff;
+  --md-accent-soft: rgba(132, 255, 255, 0.14);
+  --md-accent-fg: #0f111a;
+
+  --md-border: #1f2a3a;
+  --md-border-strong: #2c3a4e;
+
+  --md-link: #82aaff;
+  --md-quote: #546e7a;
+  --md-hr: #1f2a3a;
+
+  --md-code-bg: #111824;
+  --md-code-fg: #84ffff;
+  --md-code-border: #1f2a3a;
+
+  --md-selection: rgba(84, 110, 122, 0.35);
+  --md-caret: #84ffff;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-ring: rgba(132, 255, 255, 0.4);
+
+  --syntax-keyword: #c792ea;
+  --syntax-string: #c3e88d;
+  --syntax-number: #f78c6c;
+  --syntax-comment: #464b5d;
+  --syntax-function: #82aaff;
+  --syntax-tag: #f07178;
+  --syntax-attr: #ffcb6b;
+  --syntax-builtin: #82aaff;
+  --syntax-punct: #89ddff;
+}
+
+[data-theme='material-deep-ocean'][data-mode='light'] {
+  --md-bg: #f5f7f8;
+  --md-bg-surface: #e8edef;
+  --md-bg-elevated: #dce3e7;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #455a64;
+  --md-fg-muted: #78909c;
+  --md-fg-faint: #b0bec5;
+
+  --md-heading: #1b2b3a;
+  --md-accent: #00838f;
+  --md-accent-2: #1565c0;
+  --md-accent-soft: rgba(0, 131, 143, 0.14);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #cfd8dc;
+  --md-border-strong: #aab4ba;
+
+  --md-link: #00838f;
+  --md-quote: #78909c;
+  --md-hr: #cfd8dc;
+
+  --md-code-bg: #e8edef;
+  --md-code-fg: #00838f;
+  --md-code-border: #cfd8dc;
+
+  --md-selection: rgba(0, 131, 143, 0.16);
+  --md-caret: #00838f;
+
+  --md-shadow-sm: 0 1px 2px rgba(40, 60, 70, 0.08);
+  --md-shadow: 0 12px 32px rgba(40, 60, 70, 0.12);
+  --md-ring: rgba(0, 131, 143, 0.4);
+
+  --syntax-keyword: #6a1b9a;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #78909c;
+  --syntax-function: #1565c0;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #00838f;
+  --syntax-punct: #00838f;
+}

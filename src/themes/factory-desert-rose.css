@@ -1,0 +1,93 @@
+/* Desert Rose — 来自 theme-factory。
+   调色板：Dusty Rose #d4a5a5 / Clay #b87d6d / Sand #e8d5c4 / Deep Burgundy #5d2e46
+   dark: 深酒红底 + 灰玫瑰强调；light: 沙底 + 黏土强调。 */
+
+[data-theme='factory-desert-rose'][data-mode='dark'] {
+  --md-bg: #2a1a28;
+  --md-bg-surface: #3a2438;
+  --md-bg-elevated: #4a3050;
+  --md-bg-input: #1f1320;
+
+  --md-fg: #d8c8d4;
+  --md-fg-muted: #a890a0;
+  --md-fg-faint: #6a5060;
+
+  --md-heading: #f0e0e8;
+  --md-accent: #d4a5a5;
+  --md-accent-2: #b87d6d;
+  --md-accent-soft: rgba(212, 165, 165, 0.2);
+  --md-accent-fg: #2a1a28;
+
+  --md-border: #4a3050;
+  --md-border-strong: #5a4060;
+
+  --md-link: #d4a5a5;
+  --md-quote: #6a5060;
+  --md-hr: #4a3050;
+
+  --md-code-bg: #3a2438;
+  --md-code-fg: #d4a5a5;
+  --md-code-border: #4a3050;
+
+  --md-selection: rgba(212, 165, 165, 0.22);
+  --md-caret: #d4a5a5;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-ring: rgba(212, 165, 165, 0.4);
+
+  --syntax-keyword: #d4a5a5;
+  --syntax-string: #c8d18c;
+  --syntax-number: #d4a87c;
+  --syntax-comment: #6a5060;
+  --syntax-function: #d4b4a5;
+  --syntax-tag: #c87878;
+  --syntax-attr: #d4c87c;
+  --syntax-builtin: #d4a5a5;
+  --syntax-punct: #a890a0;
+}
+
+[data-theme='factory-desert-rose'][data-mode='light'] {
+  --md-bg: #faf3ee;
+  --md-bg-surface: #f0e0d8;
+  --md-bg-elevated: #e6d0c4;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #4a2a3a;
+  --md-fg-muted: #7a5a6a;
+  --md-fg-faint: #b09098;
+
+  --md-heading: #2a1a28;
+  --md-accent: #b87d6d;
+  --md-accent-2: #5d2e46;
+  --md-accent-soft: rgba(184, 125, 109, 0.18);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d8c0b8;
+  --md-border-strong: #b89890;
+
+  --md-link: #b87d6d;
+  --md-quote: #7a5a6a;
+  --md-hr: #d8c0b8;
+
+  --md-code-bg: #f0e0d8;
+  --md-code-fg: #b87d6d;
+  --md-code-border: #d8c0b8;
+
+  --md-selection: rgba(184, 125, 109, 0.18);
+  --md-caret: #b87d6d;
+
+  --md-shadow-sm: 0 1px 2px rgba(80, 40, 60, 0.08);
+  --md-shadow: 0 12px 32px rgba(80, 40, 60, 0.12);
+  --md-ring: rgba(184, 125, 109, 0.4);
+
+  --syntax-keyword: #5d2e46;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #8a6a78;
+  --syntax-function: #1a5a8a;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #b87d6d;
+  --syntax-punct: #5d2e46;
+}

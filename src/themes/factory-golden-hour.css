@@ -1,0 +1,93 @@
+/* Golden Hour — 来自 theme-factory。
+   调色板：Mustard Yellow #f4a900 / Terracotta #c1666b / Warm Beige #d4b896 / Chocolate Brown #4a403a
+   dark: 巧克力棕底 + 芥末黄强调；light: 暖米底 + 赤陶强调。 */
+
+[data-theme='factory-golden-hour'][data-mode='dark'] {
+  --md-bg: #2a2420;
+  --md-bg-surface: #3a3128;
+  --md-bg-elevated: #4a403a;
+  --md-bg-input: #221e1a;
+
+  --md-fg: #e0d4c0;
+  --md-fg-muted: #a8987c;
+  --md-fg-faint: #705e48;
+
+  --md-heading: #f4e8c8;
+  --md-accent: #f4a900;
+  --md-accent-2: #c1666b;
+  --md-accent-soft: rgba(244, 169, 0, 0.2);
+  --md-accent-fg: #2a2420;
+
+  --md-border: #4a403a;
+  --md-border-strong: #5a4a3a;
+
+  --md-link: #f4a900;
+  --md-quote: #705e48;
+  --md-hr: #4a403a;
+
+  --md-code-bg: #3a3128;
+  --md-code-fg: #f4a900;
+  --md-code-border: #4a403a;
+
+  --md-selection: rgba(244, 169, 0, 0.22);
+  --md-caret: #f4a900;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --md-ring: rgba(244, 169, 0, 0.4);
+
+  --syntax-keyword: #f4a900;
+  --syntax-string: #c8d18c;
+  --syntax-number: #f4a900;
+  --syntax-comment: #705e48;
+  --syntax-function: #f4c87c;
+  --syntax-tag: #c1666b;
+  --syntax-attr: #f4a900;
+  --syntax-builtin: #f4a900;
+  --syntax-punct: #a8987c;
+}
+
+[data-theme='factory-golden-hour'][data-mode='light'] {
+  --md-bg: #faf3e8;
+  --md-bg-surface: #f0e0c8;
+  --md-bg-elevated: #e6d0b0;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #4a403a;
+  --md-fg-muted: #7a6e5e;
+  --md-fg-faint: #b0a090;
+
+  --md-heading: #2a2420;
+  --md-accent: #c1666b;
+  --md-accent-2: #f4a900;
+  --md-accent-soft: rgba(193, 102, 107, 0.16);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d4b896;
+  --md-border-strong: #b89878;
+
+  --md-link: #c1666b;
+  --md-quote: #7a6e5e;
+  --md-hr: #d4b896;
+
+  --md-code-bg: #f0e0c8;
+  --md-code-fg: #c45d2e;
+  --md-code-border: #d4b896;
+
+  --md-selection: rgba(193, 102, 107, 0.18);
+  --md-caret: #c1666b;
+
+  --md-shadow-sm: 0 1px 2px rgba(80, 60, 40, 0.08);
+  --md-shadow: 0 12px 32px rgba(80, 60, 40, 0.12);
+  --md-ring: rgba(193, 102, 107, 0.4);
+
+  --syntax-keyword: #c45d2e;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #8a7e6e;
+  --syntax-function: #1a5a8a;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #c1666b;
+  --syntax-punct: #c45d2e;
+}

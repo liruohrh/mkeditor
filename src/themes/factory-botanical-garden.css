@@ -1,0 +1,93 @@
+/* Botanical Garden — 来自 theme-factory。
+   调色板：Fern Green #4a7c59 / Marigold #f9a620 / Terracotta #b7472a / Cream #f5f3ed
+   dark: 深森林绿底 + 万寿菊黄强调；light: 奶白底 + 蕨绿强调。 */
+
+[data-theme='factory-botanical-garden'][data-mode='dark'] {
+  --md-bg: #1f3324;
+  --md-bg-surface: #2a4530;
+  --md-bg-elevated: #355640;
+  --md-bg-input: #1a2a1e;
+
+  --md-fg: #c8d8c8;
+  --md-fg-muted: #88a088;
+  --md-fg-faint: #4a604a;
+
+  --md-heading: #e8e8c8;
+  --md-accent: #4a7c59;
+  --md-accent-2: #f9a620;
+  --md-accent-soft: rgba(74, 124, 89, 0.22);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #355640;
+  --md-border-strong: #487050;
+
+  --md-link: #f9a620;
+  --md-quote: #6a8070;
+  --md-hr: #355640;
+
+  --md-code-bg: #2a4530;
+  --md-code-fg: #f9a620;
+  --md-code-border: #355640;
+
+  --md-selection: rgba(249, 166, 32, 0.22);
+  --md-caret: #f9a620;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-ring: rgba(74, 124, 89, 0.45);
+
+  --syntax-keyword: #f9a620;
+  --syntax-string: #a8d18c;
+  --syntax-number: #f9a620;
+  --syntax-comment: #4a604a;
+  --syntax-function: #88c8a8;
+  --syntax-tag: #b7472a;
+  --syntax-attr: #f9a620;
+  --syntax-builtin: #4a7c59;
+  --syntax-punct: #88a088;
+}
+
+[data-theme='factory-botanical-garden'][data-mode='light'] {
+  --md-bg: #f5f3ed;
+  --md-bg-surface: #e8e4d8;
+  --md-bg-elevated: #ddd8c4;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #3a4530;
+  --md-fg-muted: #6a7a60;
+  --md-fg-faint: #a0a890;
+
+  --md-heading: #1f3324;
+  --md-accent: #4a7c59;
+  --md-accent-2: #b7472a;
+  --md-accent-soft: rgba(74, 124, 89, 0.16);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #c8c4b0;
+  --md-border-strong: #a8a48a;
+
+  --md-link: #4a7c59;
+  --md-quote: #6a7a60;
+  --md-hr: #c8c4b0;
+
+  --md-code-bg: #e8e4d8;
+  --md-code-fg: #4a7c59;
+  --md-code-border: #c8c4b0;
+
+  --md-selection: rgba(74, 124, 89, 0.18);
+  --md-caret: #4a7c59;
+
+  --md-shadow-sm: 0 1px 2px rgba(40, 60, 40, 0.08);
+  --md-shadow: 0 12px 32px rgba(40, 60, 40, 0.12);
+  --md-ring: rgba(74, 124, 89, 0.4);
+
+  --syntax-keyword: #4a7c59;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #7a8a70;
+  --syntax-function: #1a5a8a;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #4a7c59;
+  --syntax-punct: #4a7c59;
+}

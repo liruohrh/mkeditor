@@ -1,0 +1,93 @@
+/* Arctic Frost — 来自 theme-factory。
+   调色板：Ice Blue #d4e4f7 / Steel Blue #4a6fa5 / Silver #c0c0c0 / Crisp White #fafafa
+   dark: 深海军蓝底 + 钢蓝强调；light: 雪白底 + 钢蓝强调。 */
+
+[data-theme='factory-arctic-frost'][data-mode='dark'] {
+  --md-bg: #1a2638;
+  --md-bg-surface: #24344a;
+  --md-bg-elevated: #2f4360;
+  --md-bg-input: #131c2c;
+
+  --md-fg: #c8d4e8;
+  --md-fg-muted: #8898b0;
+  --md-fg-faint: #5a6878;
+
+  --md-heading: #ffffff;
+  --md-accent: #4a6fa5;
+  --md-accent-2: #d4e4f7;
+  --md-accent-soft: rgba(74, 111, 165, 0.22);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #2f4360;
+  --md-border-strong: #3f5778;
+
+  --md-link: #6fa8d3;
+  --md-quote: #6a7a88;
+  --md-hr: #2f4360;
+
+  --md-code-bg: #24344a;
+  --md-code-fg: #6fa8d3;
+  --md-code-border: #2f4360;
+
+  --md-selection: rgba(74, 111, 165, 0.32);
+  --md-caret: #6fa8d3;
+
+  --md-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --md-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-ring: rgba(74, 111, 165, 0.4);
+
+  --syntax-keyword: #6fa8d3;
+  --syntax-string: #a8c890;
+  --syntax-number: #d4a87c;
+  --syntax-comment: #5a6878;
+  --syntax-function: #6fa8d3;
+  --syntax-tag: #c87878;
+  --syntax-attr: #d4c87c;
+  --syntax-builtin: #4a6fa5;
+  --syntax-punct: #88a0b8;
+}
+
+[data-theme='factory-arctic-frost'][data-mode='light'] {
+  --md-bg: #fafafa;
+  --md-bg-surface: #eaeef4;
+  --md-bg-elevated: #dae0ea;
+  --md-bg-input: #ffffff;
+
+  --md-fg: #2a3a4a;
+  --md-fg-muted: #5a6878;
+  --md-fg-faint: #a0aab8;
+
+  --md-heading: #1a2638;
+  --md-accent: #4a6fa5;
+  --md-accent-2: #2a3a4a;
+  --md-accent-soft: rgba(74, 111, 165, 0.14);
+  --md-accent-fg: #ffffff;
+
+  --md-border: #d4d8e0;
+  --md-border-strong: #a8b0bc;
+
+  --md-link: #4a6fa5;
+  --md-quote: #5a6878;
+  --md-hr: #d4d8e0;
+
+  --md-code-bg: #eaeef4;
+  --md-code-fg: #4a6fa5;
+  --md-code-border: #d4d8e0;
+
+  --md-selection: rgba(74, 111, 165, 0.16);
+  --md-caret: #4a6fa5;
+
+  --md-shadow-sm: 0 1px 2px rgba(40, 60, 80, 0.08);
+  --md-shadow: 0 12px 32px rgba(40, 60, 80, 0.12);
+  --md-ring: rgba(74, 111, 165, 0.4);
+
+  --syntax-keyword: #2a5a8a;
+  --syntax-string: #2e7d32;
+  --syntax-number: #c45d2e;
+  --syntax-comment: #7a8898;
+  --syntax-function: #2a5a8a;
+  --syntax-tag: #c62828;
+  --syntax-attr: #e08b00;
+  --syntax-builtin: #4a6fa5;
+  --syntax-punct: #4a6fa5;
+}

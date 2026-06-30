@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import './App.css';
+import { RotateCcwIcon, MoonIcon, SunIcon, EyeIcon, Code2Icon } from 'lucide-react';
+
 import './editor/editor.css';
 import './themes/material-ocean.css';
 import './themes/material-palenight.css';
@@ -27,7 +28,8 @@ import {
   resolveMode,
   type ThemeMode,
 } from './themes/themes';
-
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 type EditorMode = 'live' | 'source';
 
 const THEME_STORAGE_KEY = 'mdeditor.theme';
@@ -126,112 +128,110 @@ function App() {
 
   const resetSample = () => setMarkdown(sampleContent);
 
+  // 主题模式 tooltip 文案：若发生回退，附上说明。
+  const themeModeTip = modeFallback
+    ? `${themeMode === 'dark' ? '深色' : '浅色'}模式（当前主题不支持，已回退到${
+        effectiveMode === 'dark' ? '深' : '浅'
+      }色）`
+    : `${themeMode === 'dark' ? '深色' : '浅色'}模式（点击切换到${
+        themeMode === 'dark' ? '浅色' : '深色'
+      }）`;
+
   return (
-    <div className="app-shell">
-      <header className="app-header">
-        <div className="app-brand">
-          <span className="brand-dot" aria-hidden />
-          <span className="brand-name">MD Editor</span>
-          <span className="brand-sub">Milkdown · Material</span>
-        </div>
+    <TooltipProvider>
+      <div className="flex h-screen flex-col">
+        {/* ===== 顶栏 ===== */}
+        <header className="flex h-12 shrink-0 items-center gap-3 border-b bg-muted/50 px-4">
+          <div className="flex items-center gap-2">
+            <span className="size-2 rounded-full bg-primary" aria-hidden />
+            <span className="text-sm font-semibold">MD Editor</span>
+            <span className="text-xs text-muted-foreground">Milkdown · Material</span>
+          </div>
 
-        <div className="spacer" />
+          <div className="ml-auto flex items-center gap-2">
+            <ThemeSwitcher
+              themes={themes}
+              value={themeId}
+              mode={effectiveMode}
+              onChange={setThemeId}
+            />
 
-        {/* 主题模式（dark/light）切换 */}
-        <div
-          className="mode-toggle theme-mode-toggle"
-          role="tablist"
-          aria-label="主题模式"
-          title={
-            modeFallback
-              ? `当前主题不支持 ${themeMode === 'dark' ? '深' : '浅'}色，已回退到 ${
-                  effectiveMode === 'dark' ? '深' : '浅'
-                }色`
-              : ''
-          }
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={themeMode === 'dark'}
-            className={themeMode === 'dark' ? 'active' : ''}
-            onClick={() => setThemeMode('dark')}
-          >
-            深色
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={themeMode === 'light'}
-            className={themeMode === 'light' ? 'active' : ''}
-            onClick={() => setThemeMode('light')}
-          >
-            浅色
-          </button>
-        </div>
+            <Button variant="outline" size="sm" onClick={resetSample}>
+              <RotateCcwIcon data-icon="inline-start" />
+              重置示例
+            </Button>
+          </div>
+        </header>
 
-        {/* 编辑模式（实时渲染/源码）切换 */}
-        <div className="mode-toggle" role="tablist" aria-label="编辑模式">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={editorMode === 'live'}
-            className={editorMode === 'live' ? 'active' : ''}
-            onClick={() => setEditorMode('live')}
-          >
-            实时渲染
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={editorMode === 'source'}
-            className={editorMode === 'source' ? 'active' : ''}
-            onClick={() => setEditorMode('source')}
-          >
-            源码
-          </button>
-        </div>
+        {/* ===== 编辑器主区 ===== */}
+        <main className="min-h-0 flex-1 overflow-hidden">
+          {editorMode === 'live' ? (
+            // 切换模式时通过 key 重建 MilkdownEditor，确保载入最新 markdown。
+            <MilkdownEditor key="live-editor" initialValue={markdown} onChange={setMarkdown} />
+          ) : (
+            <textarea
+              className="source-editor h-full w-full resize-none border-0 bg-background p-12 font-mono text-sm leading-7 outline-none"
+              style={{ caretColor: 'var(--md-caret)' }}
+              value={markdown}
+              onChange={(e) => setMarkdown(e.currentTarget.value)}
+              spellCheck={false}
+              placeholder="# 在这里输入 Markdown…"
+            />
+          )}
+        </main>
 
-        <ThemeSwitcher themes={themes} value={themeId} mode={effectiveMode} onChange={setThemeId} />
+        {/* ===== 状态栏：左侧模式切换按钮，右侧统计 ===== */}
+        <footer className="flex h-10 shrink-0 items-center gap-2 border-t bg-muted/50 px-4 text-xs text-muted-foreground">
+          {/* 主题模式（dark/light）单按钮切换 */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                aria-label="切换主题模式"
+                onClick={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')}
+              >
+                {themeMode === 'dark' ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="top">{themeModeTip}</TooltipContent>
+          </Tooltip>
 
-        <button type="button" className="ghost-btn" onClick={resetSample}>
-          重置示例
-        </button>
-      </header>
+          {/* 编辑模式（live/source）单按钮切换 */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                aria-label="切换编辑模式"
+                onClick={() => setEditorMode(editorMode === 'live' ? 'source' : 'live')}
+              >
+                {editorMode === 'live' ? <EyeIcon /> : <Code2Icon />}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="top">
+              {editorMode === 'live'
+                ? '实时渲染（点击切换到源码）'
+                : '源码模式（点击切换到实时渲染）'}
+            </TooltipContent>
+          </Tooltip>
 
-      <main className={`app-main ${editorMode === 'live' ? 'live-mode' : 'source-mode'}`}>
-        {editorMode === 'live' ? (
-          // 切换模式时通过 key 重建 MilkdownEditor，确保载入最新 markdown。
-          <MilkdownEditor key="live-editor" initialValue={markdown} onChange={setMarkdown} />
-        ) : (
-          <textarea
-            className="source-editor"
-            value={markdown}
-            onChange={(e) => setMarkdown(e.currentTarget.value)}
-            spellCheck={false}
-            placeholder="# 在这里输入 Markdown…"
-          />
-        )}
-      </main>
-
-      <footer className="app-footer">
-        <span className="stat">
-          行 <span className="stat-value">{stats.lines.toLocaleString()}</span>
-        </span>
-        <span className="stat">
-          词 <span className="stat-value">{stats.words.toLocaleString()}</span>
-        </span>
-        <span className="stat">
-          字符 <span className="stat-value">{stats.chars.toLocaleString()}</span>
-        </span>
-        <span className="spacer" />
-        <span className="mode-badge">
-          {effectiveMode === 'dark' ? 'DARK' : 'LIGHT'}
-          {modeFallback ? ' (fallback)' : ''}
-        </span>
-        <span className="mode-badge">{editorMode === 'live' ? 'WYSIWYG' : 'SOURCE'}</span>
-      </footer>
-    </div>
+          {/* 右侧：统计 */}
+          <div className="ml-auto flex items-center gap-4">
+            <span>
+              行 <span className="font-medium text-foreground">{stats.lines.toLocaleString()}</span>
+            </span>
+            <span>
+              词 <span className="font-medium text-foreground">{stats.words.toLocaleString()}</span>
+            </span>
+            <span>
+              字符{' '}
+              <span className="font-medium text-foreground">{stats.chars.toLocaleString()}</span>
+            </span>
+          </div>
+        </footer>
+      </div>
+    </TooltipProvider>
   );
 }
 

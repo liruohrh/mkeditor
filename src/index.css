@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ===== shadcn 语义令牌 → Tailwind 颜色映射（Tailwind v4 @theme inline） ===== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "SFMono-Regular", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* ===== 把内置主题的 --md-* 变量映射到 shadcn 语义令牌 =====
+   每个 [data-theme="X"][data-mode="Y"] 块都定义了 --md-*；
+   此处统一桥接到 shadcn 的 --background / --primary / 等令牌，
+   让 shadcn 组件自动跟随主题切换。 */
+[data-theme] {
+  --background: var(--md-bg);
+  --foreground: var(--md-fg);
+  --primary: var(--md-accent);
+  --primary-foreground: var(--md-accent-fg);
+  --secondary: var(--md-bg-elevated);
+  --secondary-foreground: var(--md-fg);
+  --muted: var(--md-bg-surface);
+  --muted-foreground: var(--md-fg-muted);
+  --accent: var(--md-accent-soft);
+  --accent-foreground: var(--md-accent);
+  --border: var(--md-border);
+  --input: var(--md-bg-input);
+  --ring: var(--md-ring);
+  --card: var(--md-bg-surface);
+  --card-foreground: var(--md-fg);
+  --popover: var(--md-bg-elevated);
+  --popover-foreground: var(--md-fg);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --radius: 0.5rem;
+}
+
+/* 让 UA 控件（滚动条/表单）跟随主题模式。 */
+[data-mode="dark"] {
+  color-scheme: dark;
+}
+[data-mode="light"] {
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ===== 滚动条样式（跟随主题变量） ===== */
+.source-editor::-webkit-scrollbar,
+.milkdown-host::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.source-editor::-webkit-scrollbar-track,
+.milkdown-host::-webkit-scrollbar-track {
+  background: var(--md-bg-surface);
+}
+.source-editor::-webkit-scrollbar-thumb,
+.milkdown-host::-webkit-scrollbar-thumb {
+  background: var(--md-border);
+  border-radius: 5px;
+  border: 2px solid var(--md-bg-surface);
+}
+.source-editor::-webkit-scrollbar-thumb:hover,
+.milkdown-host::-webkit-scrollbar-thumb:hover {
+  background: var(--md-fg-muted);
+}
+.source-editor::-webkit-scrollbar-corner,
+.milkdown-host::-webkit-scrollbar-corner {
+  background: transparent;
+}

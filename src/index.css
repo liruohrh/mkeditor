@@ -49,7 +49,7 @@
   --accent: var(--md-accent-soft);
   --accent-foreground: var(--md-accent);
   --border: var(--md-border);
-  --input: var(--md-bg-input);
+  --input: var(--md-border);
   --ring: var(--md-ring);
   --card: var(--md-bg-surface);
   --card-foreground: var(--md-fg);
@@ -100,5 +100,32 @@
 }
 .source-editor::-webkit-scrollbar-corner,
 .milkdown-host::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ===== 标签栏细滚动条（仅在悬停时显示） ===== */
+.tabbar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-border) transparent;
+}
+.tabbar-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.tabbar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tabbar-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+.tabbar-scroll:hover::-webkit-scrollbar-thumb {
+  background: var(--md-border);
+}
+.tabbar-scroll:hover::-webkit-scrollbar-thumb:hover {
+  background: var(--md-fg-muted);
+}
+.tabbar-scroll::-webkit-scrollbar-corner {
   background: transparent;
 }

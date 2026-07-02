@@ -8,6 +8,10 @@ export interface ThemeMeta {
   modes: ThemeMode[];
   /** 切换器中展示的色板，按模式分别给出。 */
   swatch: Record<ThemeMode, [string, string, string]>;
+  /** 是否为用户主题（来自配置目录的 themes/）。 */
+  isUser?: boolean;
+  /** 用户主题的 CSS 文件路径。 */
+  path?: string;
 }
 
 export const themes: ThemeMeta[] = [

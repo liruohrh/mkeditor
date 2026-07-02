@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef, Ref, forwardRef } from 'react';
 import {
   ChevronRightIcon,
   ChevronDownIcon,
@@ -376,36 +376,15 @@ interface TreeLevelProps {
 }
 
 /** 重命名输入框：挂载后自动聚焦并选中文字。 */
-function RenameInput({
-  value,
-  onChange,
-  onConfirm,
-  onCancel,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  onConfirm: () => void;
-  onCancel: () => void;
-}) {
-  const ref = useRef<HTMLInputElement>(null);
-  // 防止挂载后 Radix 焦点恢复导致的立即 blur 触发 onConfirm
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    // fix: 延迟到下一帧聚焦，绕过 Radix ContextMenu 关闭后将焦点恢复到 trigger 的行为
-    // debug原因：快捷键没事，但是菜单就无法自动聚焦
-    const timer = setTimeout(() => {
-      const el = ref.current;
-      if (!el) return;
-      el.focus();
-      if (el.value) {
-        el.setSelectionRange(0, el.value.lastIndexOf('.'));
-      }
-    }, 200);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+const RenameInput = forwardRef<
+  HTMLInputElement,
+  {
+    value: string;
+    onChange: (v: string) => void;
+    onConfirm: () => void;
+    onCancel: () => void;
+  }
+>(function RenameInput({ value, onChange, onConfirm, onCancel }, ref) {
   return (
     <input
       ref={ref}
@@ -429,7 +408,7 @@ function RenameInput({
       className="min-w-0 flex-1 rounded-sm border bg-background px-1 py-0 text-xs outline-none focus-visible:ring-1 focus-visible:ring-ring"
     />
   );
-}
+});
 
 function TreeLevel({
   dirPath,
@@ -458,7 +437,7 @@ function TreeLevel({
   const entries = cache[dirPath];
   const isOpen = expanded.includes(dirPath);
   const [dragOverPath, setDragOverPath] = useState<string | null>(null);
-
+  const renameInputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (isOpen && !cache[dirPath]) {
       void onOpenDir(dirPath);
@@ -553,6 +532,7 @@ function TreeLevel({
                   )}
                   {isRenaming ? (
                     <RenameInput
+                      ref={renameInputRef}
                       value={renamingValue}
                       onChange={onRenameChange}
                       onConfirm={onRenameConfirm}
@@ -563,7 +543,25 @@ function TreeLevel({
                   )}
                 </div>
               </ContextMenuTrigger>
-              <ContextMenuContent>
+              <ContextMenuContent
+                onCloseAutoFocus={(event) => {
+                  if (isRenaming && renameInputRef.current) {
+                    // fix: 延迟到下一帧聚焦，绕过 Radix ContextMenu 关闭后将焦点恢复到 trigger 的行为
+                    // debug原因：快捷键没事，但是菜单就无法自动聚焦
+                    // 可以在 RenameInput里timeout处理，但是最好还是在此处处理，
+                    //  因为ContextContent关闭后还有动画，动画结束才执行卸载，
+                    //  所以RenameInput里timeout（要估计动画时间） 或者 在这里处理
+                    event.preventDefault();
+                    renameInputRef.current.focus();
+                    if (renameInputRef.current.value) {
+                      renameInputRef.current.setSelectionRange(
+                        0,
+                        renameInputRef.current.value.lastIndexOf('.'),
+                      );
+                    }
+                  }
+                }}
+              >
                 {isDir && (
                   <>
                     <ContextMenuItem onSelect={() => onCreate(e.path, 'file')}>

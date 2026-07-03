@@ -188,16 +188,32 @@ fn reveal_in_explorer(path: String) -> Result<(), String> {
     {
         use std::process::Command;
         if p.is_dir() {
-            Command::new("open").arg(&path).spawn().map_err(|e| format!("reveal: {e}"))?;
+            Command::new("open")
+                .arg(&path)
+                .spawn()
+                .map_err(|e| format!("reveal: {e}"))?;
         } else {
-            Command::new("open").args(["-R", &path]).spawn().map_err(|e| format!("reveal: {e}"))?;
+            Command::new("open")
+                .args(["-R", &path])
+                .spawn()
+                .map_err(|e| format!("reveal: {e}"))?;
         }
     }
     #[cfg(all(unix, not(target_os = "macos")))]
     {
         use std::process::Command;
-        let dir = if p.is_dir() { &path } else { p.parent().map(|x| x.to_string_lossy().to_string()).unwrap_or_else(|| path.clone()).as_str() };
-        Command::new("xdg-open").arg(dir).spawn().map_err(|e| format!("reveal: {e}"))?;
+        let dir = if p.is_dir() {
+            &path
+        } else {
+            p.parent()
+                .map(|x| x.to_string_lossy().to_string())
+                .unwrap_or_else(|| path.clone())
+                .as_str()
+        };
+        Command::new("xdg-open")
+            .arg(dir)
+            .spawn()
+            .map_err(|e| format!("reveal: {e}"))?;
     }
     Ok(())
 }

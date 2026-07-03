@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "fmt": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\" && prettier --write \"src-tauri/gen/schemas/*.json\"",
+    "fmt": "npm-run-all fmt:*",
+    "fmt:web": "node scripts/format.js",
     "fmt:rust": "cd src-tauri && cargo fmt --all"
   },
   "dependencies": {
@@ -38,6 +39,8 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^6.0.2",
+    "js-beautify": "^2.0.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.9.1",
     "typescript": "~6.0.3",
     "vite": "^8.0.16"

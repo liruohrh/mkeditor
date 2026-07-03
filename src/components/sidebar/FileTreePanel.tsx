@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef, Ref, forwardRef } from 'react';
+import { useEffect, useState, useCallback, useRef, forwardRef } from 'react';
 import {
   ChevronRightIcon,
   ChevronDownIcon,
@@ -231,7 +231,7 @@ export default function FileTreePanel() {
         className="tabbar-scroll min-h-0 flex-1 overflow-y-auto outline-none"
         tabIndex={0}
         onKeyDown={handleTreeKeyDown}
-        onMouseDown={(e) => {
+        onMouseDown={() => {
           // 不需要此处也可以捕获快捷键
           // 点击树区域时聚焦容器（输入框除外），使 F2/Delete 快捷键可用
           // if (!(e.target instanceof HTMLInputElement)) {

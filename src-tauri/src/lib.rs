@@ -203,15 +203,14 @@ fn reveal_in_explorer(path: String) -> Result<(), String> {
     {
         use std::process::Command;
         let dir = if p.is_dir() {
-            &path
+            path.clone()
         } else {
             p.parent()
                 .map(|x| x.to_string_lossy().to_string())
                 .unwrap_or_else(|| path.clone())
-                .as_str()
         };
         Command::new("xdg-open")
-            .arg(dir)
+            .arg(&dir)
             .spawn()
             .map_err(|e| format!("reveal: {e}"))?;
     }

@@ -79,6 +79,7 @@ interface EditorState {
 
   sidebarOpen: boolean;
   sidebarPanel: SidebarPanel;
+  sidebarWidth: number;
   fileTreeRoot: string | null;
   expandedDirs: string[];
   treeVersion: number;
@@ -93,6 +94,7 @@ interface EditorState {
   setThemeId: (id: string) => void;
   setThemeMode: (m: ThemeMode) => void;
   setSidebarPanel: (p: SidebarPanel) => void;
+  setSidebarWidth: (w: number) => void;
   toggleSidebar: () => void;
   setFileTreeRoot: (root: string | null) => void;
   toggleDir: (path: string) => void;
@@ -125,6 +127,16 @@ interface EditorState {
 const THEME_KEY = 'mdeditor.theme';
 const THEME_MODE_KEY = 'mdeditor.themeMode';
 const EDITOR_MODE_KEY = 'mdeditor.editorMode';
+const SIDEBAR_WIDTH_KEY = 'mdeditor.sidebarWidth';
+
+export const DEFAULT_SIDEBAR_WIDTH = 256;
+export const MIN_SIDEBAR_WIDTH = 200;
+export const MAX_SIDEBAR_WIDTH = 560;
+
+function clampSidebarWidth(w: number): number {
+  if (!Number.isFinite(w)) return DEFAULT_SIDEBAR_WIDTH;
+  return Math.min(MAX_SIDEBAR_WIDTH, Math.max(MIN_SIDEBAR_WIDTH, Math.round(w)));
+}
 
 function loadLS(key: string): string | null {
   try {
@@ -271,6 +283,7 @@ export const useEditorStore = create<EditorState>((set, get) => {
 
     sidebarOpen: true,
     sidebarPanel: 'files',
+    sidebarWidth: clampSidebarWidth(parseInt(loadLS(SIDEBAR_WIDTH_KEY) ?? '', 10)),
     fileTreeRoot: null,
     expandedDirs: [],
     treeVersion: 0,
@@ -378,6 +391,11 @@ export const useEditorStore = create<EditorState>((set, get) => {
       set({ themeMode: m });
     },
     setSidebarPanel: (p) => set({ sidebarPanel: p, sidebarOpen: true }),
+    setSidebarWidth: (w) => {
+      const clamped = clampSidebarWidth(w);
+      saveLS(SIDEBAR_WIDTH_KEY, String(clamped));
+      set({ sidebarWidth: clamped });
+    },
     toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
     setFileTreeRoot: (root) => {
       set({ fileTreeRoot: root, expandedDirs: root ? [root] : [] });

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Crepe } from '@milkdown/crepe';
 
 import { linkInputRule } from '@/editor/linkInputRule';
+import { parseOutline } from '@/lib/outline';
 
 interface Props {
   /** 作为编辑器初始内容的 Markdown，仅在挂载时使用（非受控）。 */
@@ -23,6 +24,8 @@ export default function MilkdownEditor({ initialValue, onChange }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
+  // 保存最新 markdown，用于大纲跳转时将源码行号映射到标题索引
+  const markdownRef = useRef(initialValue);
 
   useEffect(() => {
     const root = hostRef.current;
@@ -52,6 +55,7 @@ export default function MilkdownEditor({ initialValue, onChange }: Props) {
     // 注册 markdown 变更监听
     crepe.on((listener) => {
       listener.markdownUpdated((_ctx, markdown) => {
+        markdownRef.current = markdown;
         onChangeRef.current(markdown);
       });
     });
@@ -71,6 +75,28 @@ export default function MilkdownEditor({ initialValue, onChange }: Props) {
     };
     // 仅在挂载时初始化编辑器，后续 props 变化不应重建。
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 大纲跳转：将源码行号映射到对应的标题 DOM 节点并滚动到可视区域。
+  // 大纲解析顺序与编辑器 DOM 中 h1~h6 的渲染顺序一致，按索引取目标节点。
+  useEffect(() => {
+    const onGoto = (e: Event) => {
+      const line = (e as CustomEvent<number>).detail as number;
+      const root = hostRef.current;
+      if (root == null) return;
+      const idx = parseOutline(markdownRef.current).findIndex((h) => h.line === line);
+      if (idx < 0) return;
+      const headingEls = root.querySelectorAll<HTMLElement>(
+        '.ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4, .ProseMirror h5, .ProseMirror h6',
+      );
+      const target = headingEls[idx];
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.focus({ preventScroll: true });
+      }
+    };
+    window.addEventListener('mdeditor:goto-line', onGoto);
+    return () => window.removeEventListener('mdeditor:goto-line', onGoto);
   }, []);
 
   return <div className="milkdown-host" ref={hostRef} />;

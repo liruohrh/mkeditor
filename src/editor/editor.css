@@ -33,8 +33,7 @@
   --crepe-font-title: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --crepe-font-default: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --crepe-font-code:
-    'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Menlo, Consolas,
-    'Liberation Mono', monospace;
+    'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
 
   /* 阴影 */
   --crepe-shadow-1: var(--md-shadow-sm);
@@ -72,6 +71,11 @@
   color: var(--md-fg);
 }
 
+/* 大纲跳转时为目标标题留出顶部间距，避免标题紧贴容器上沿 */
+.milkdown-host .milkdown .ProseMirror :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 16px;
+}
+
 /* 让链接颜色用项目的 --md-link 而非 primary，更贴近 Markdown 语义 */
 .milkdown-host .milkdown .ProseMirror a {
   color: var(--md-link);
@@ -84,24 +88,24 @@
   font-family: var(--crepe-font-code);
 }
 
-  /* ===== 装饰性元素配色覆盖 =====
+/* ===== 装饰性元素配色覆盖 =====
    Crepe 默认把引用线、列表序号等都用 outline/selected（即 border/selection），
    在多数主题里太淡看不清。这里改用更鲜明的语义色。 */
 
-  /* 引用块左侧竖线：用 --md-quote 替代 --md-selection */
-  .milkdown-host .milkdown .ProseMirror blockquote::before {
-    background: var(--md-quote, var(--md-accent));
-  }
+/* 引用块左侧竖线：用 --md-quote 替代 --md-selection */
+.milkdown-host .milkdown .ProseMirror blockquote::before {
+  background: var(--md-quote, var(--md-accent));
+}
 
-  /* 列表序号/项目符号：用 --md-fg-muted 替代 --md-border，保证可读 */
-  .milkdown-host .milkdown .milkdown-list-item-block .label-wrapper {
-    color: var(--md-fg-muted);
-  }
-  .milkdown-host .milkdown .milkdown-list-item-block .label-wrapper svg {
-    fill: var(--md-fg-muted);
-  }
+/* 列表序号/项目符号：用 --md-fg-muted 替代 --md-border，保证可读 */
+.milkdown-host .milkdown .milkdown-list-item-block .label-wrapper {
+  color: var(--md-fg-muted);
+}
+.milkdown-host .milkdown .milkdown-list-item-block .label-wrapper svg {
+  fill: var(--md-fg-muted);
+}
 
-  /* 任务列表勾选态：用强调色 */
-  .milkdown-host .milkdown .milkdown-list-item-block .label-wrapper .checked svg {
-    fill: var(--md-accent);
-  }
+/* 任务列表勾选态：用强调色 */
+.milkdown-host .milkdown .milkdown-list-item-block .label-wrapper .checked svg {
+  fill: var(--md-accent);
+}

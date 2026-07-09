@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { ListTreeIcon } from 'lucide-react';
 
 import { useEditorStore } from '@/store/editorStore';
 import { parseOutline } from '@/lib/outline';
@@ -8,15 +7,12 @@ import { cn } from '@/lib/utils';
 
 export default function OutlinePanel() {
   const doc = useEditorStore((s) => s.docs.find((d) => d.id === s.activeId) ?? null);
-  const editorMode = useEditorStore((s) => s.editorMode);
 
   const headings = useMemo(() => (doc ? parseOutline(doc.content) : []), [doc]);
 
   const gotoLine = (line: number) => {
-    // 源码模式下可精确定位；实时渲染模式下仅尽力滚动
-    if (editorMode === 'source') {
-      window.dispatchEvent(new CustomEvent('mdeditor:goto-line', { detail: line }));
-    }
+    // 源码模式：精确定位到行；实时渲染模式：滚动到对应标题
+    window.dispatchEvent(new CustomEvent('mdeditor:goto-line', { detail: line }));
   };
 
   if (!doc) {
@@ -44,7 +40,6 @@ export default function OutlinePanel() {
               onClick={() => gotoLine(h.line)}
               title={`第 ${h.line + 1} 行`}
             >
-              <ListTreeIcon className="mt-0.5 size-3 shrink-0 text-muted-foreground" />
               <span className="truncate">{h.text}</span>
             </button>
           </li>
